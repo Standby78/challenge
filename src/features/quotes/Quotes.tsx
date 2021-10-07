@@ -5,7 +5,7 @@ import { showEditQuote, setQuoteData } from './quotesSlice';
 import { useDeleteQuoteMutation } from './quotesApi';
 
 import { QuotesProps } from './Quotes.types';
-import { Quote } from '../../App.types';
+import { QuoteData } from '../../App.types';
 import styles from './Quotes.module.css';
 
 import { QUOTES_PER_PAGE } from '../../constants';
@@ -21,7 +21,7 @@ export function Quotes({ data, isError, isLoading, page }: QuotesProps) {
     const pageIndex = page * QUOTES_PER_PAGE;
 
     const quotesList = data
-        .map((quote: Quote, index: number) => (
+        .map((quote: QuoteData, index: number) => (
             <div key={`quote-${index}`} className={styles.quoteWrapper}>
                 <div className={styles.quoteBox}>
                     <span className={styles.author}>From: {quote.author}</span>

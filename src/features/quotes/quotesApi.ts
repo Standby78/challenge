@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { QuotesResponse, Quote } from '../../App.types';
+import { QuotesResponse, QuoteData } from '../../App.types';
 
 export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://huddle-gaming-test.herokuapp.com/' }),
@@ -15,7 +15,7 @@ export const api = createApi({
                       ]
                     : [{ type: 'Quote', id: 'LIST' }]
         }),
-        addQuote: build.mutation<Quote, Partial<Quote>>({
+        addQuote: build.mutation<QuoteData, Partial<QuoteData>>({
             query: (body) => ({
                 url: 'quotes',
                 method: 'POST',
@@ -23,11 +23,11 @@ export const api = createApi({
             }),
             invalidatesTags: [{ type: 'Quote', id: 'LIST' }]
         }),
-        getQuote: build.query<Quote, string>({
+        getQuote: build.query<QuoteData, string>({
             query: (id) => `quotes/${id}`,
             providesTags: (result, error, id) => [{ type: 'Quote', id }]
         }),
-        updateQuote: build.mutation<void, Pick<Quote, 'id'> & Partial<Quote>>({
+        updateQuote: build.mutation<void, Pick<QuoteData, 'id'> & Partial<QuoteData>>({
             query: ({ id, ...patch }) => ({
                 url: `quotes/${id}`,
                 method: 'PATCH',

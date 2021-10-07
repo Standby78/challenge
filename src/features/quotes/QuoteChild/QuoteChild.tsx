@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { hide } from './quotesSlice';
+import { hide } from '../quotesSlice';
 import styles from './QuoteChild.module.css';
-import { Quote } from '../../App.types';
+import { QuoteData } from '../../../App.types';
 
 export function QuoteChild({
     quoteData,
     apiHandler
 }: {
-    quoteData: Quote;
-    apiHandler: ({ author, quote }: Quote) => void;
+    quoteData: QuoteData;
+    apiHandler: ({ author, quote }: QuoteData) => void;
 }) {
     const dispatch = useDispatch();
     const [status, setStatus] = useState('');
@@ -41,7 +41,7 @@ export function QuoteChild({
                     <textarea
                         className={styles.input}
                         value={quote}
-                        rows={5}
+                        rows={3}
                         onChange={(e) =>
                             changeHandler({
                                 value: e.currentTarget.value,

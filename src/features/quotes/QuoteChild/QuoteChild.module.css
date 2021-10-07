@@ -1,0 +1,93 @@
+.overlay {
+    height: 100%;
+    left: 0%;
+    position: absolute;
+    top: 0%;
+    width: 100%;
+}
+
+.editQuoteHolder {
+    background: linear-gradient(135deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%);
+    border-bottom-right-radius: 60px 5px;
+    border-top: 60px solid #fdfd86;
+    border: 1px solid #e8e8e8;
+    border: 1px solid black;
+    font-family: 'Reenie Beanie';
+    font-size: 26px;
+    left: 50%;
+    max-height: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    min-width: 300px;
+    padding: 0 9px;
+    padding: 20px;
+    position: absolute;
+    top: 5%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .editQuoteHolder {
+        width: 50%;
+    }
+}
+
+input:focus {
+    border: 1px solid grey;
+    box-shadow: 0 0 10px #9ea086;
+    outline: none !important;
+}
+
+textarea:focus {
+    border: 1px solid grey;
+    box-shadow: 0 0 10px #9ea086;
+    outline: none !important;
+}
+input {
+    background-color: transparent;
+    border: 1px solid grey;
+    font-family: 'Reenie Beanie';
+    font-size: 26px;
+}
+textarea {
+    background-color: transparent;
+    border: 1px solid grey;
+    font-family: 'Reenie Beanie';
+    font-size: 26px;
+}
+.label {
+    display: block;
+    text-align: center;
+}
+
+.input {
+    width: 100%;
+    resize: vertical;
+}
+
+.cancel {
+    background: #c29631;
+    border: none;
+    color: black;
+    float: left;
+    font-family: 'Reenie Beanie';
+    font-size: 24px;
+    margin-left: 20px;
+    margin-top: 30px;
+    min-width: 100px;
+    padding: 10px;
+}
+
+.submit {
+    background: #59973e;
+    border: none;
+    color: yellow;
+    float: right;
+    font-family: 'Reenie Beanie';
+    font-size: 24px;
+    margin-right: 20px;
+    margin-top: 30px;
+    min-width: 100px;
+    padding: 10px;
+}

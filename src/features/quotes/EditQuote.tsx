@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { QuoteChild } from './QuoteChild';
+import { QuoteChild } from './QuoteChild/QuoteChild';
 import { useUpdateQuoteMutation, useGetQuoteQuery } from './quotesApi';
 import { QuoteData } from '../../App.types';
 
