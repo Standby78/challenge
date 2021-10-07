@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { hide } from './quotesSlice';
 import styles from './QuoteChild.module.css';
 import { Quote } from '../../App.types';
 
 export function QuoteChild({
     quoteData,
-    setVisible,
     apiHandler
 }: {
     quoteData: Quote;
-    setVisible: (visible: boolean) => void;
     apiHandler: ({ author, quote }: Quote) => void;
 }) {
+    const dispatch = useDispatch();
     const [status, setStatus] = useState('');
     const [newQuoteData, setNewQuoteData] = useState(quoteData);
 
@@ -51,7 +52,10 @@ export function QuoteChild({
                     <button
                         type="button"
                         className={styles.cancel}
-                        onClick={() => setVisible(false)}
+                        onClick={() => {
+                            console.log('hello');
+                            dispatch(hide());
+                        }}
                     >
                         Cancel
                     </button>
@@ -68,7 +72,7 @@ export function QuoteChild({
                             } catch {
                                 console.log('error while saving data');
                             } finally {
-                                setVisible(false);
+                                dispatch(hide());
                             }
                         }}
                     >

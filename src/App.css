@@ -1,40 +1,53 @@
 .App {
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     position: relative;
 }
 
 @media (min-width: 768px) {
     .App {
-        max-width: 70%;
+        max-width: 80%;
     }
 }
 
 .blur {
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
+    filter: blur(3px) grayscale(75%);
+    -webkit-filter: blur(3px) grayscale(75%);
 }
+
 header {
     position: relative;
 }
 h1 {
     text-align: center;
+    font-size: 40px;
+}
+@media (min-width: 768px) {
+    h1 {
+        font-size: 60px;
+    }
 }
 
 .add-quote-button {
     position: absolute;
+    border: none;
+    background-color: transparent;
     top: 0px;
     right: 20px;
-    font-size: 28px;
-    border: 1px solid black;
-    border-radius: 50%;
-    width: 36px;
+    width: 46px;
+}
+@media (min-width: 768px) {
+    .add-quote-button {
+        width: 56px;
+    }
 }
 .Pagination {
     text-align: center;
 }
 
 .Pagination-button {
+    background-color: rgba(128, 128, 128, 0.25);
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.25);
     padding: 12px;
     font-size: 16px;
 }

@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './app/store';
 import { useGetQuotesQuery } from './features/quotes/quotesApi';
-
+import { showNewQuote } from './features/quotes/quotesSlice';
 import { Quotes } from './features/quotes/Quotes';
 import { NewQuote } from './features/quotes/NewQuote';
+import { EditQuote } from './features/quotes/EditQuote';
 import { QUOTES_PER_PAGE, PAGE_BUTTONS } from './constants';
 
 import './App.css';
 
 function App() {
+    const dispatch = useDispatch();
     const { data = [], isError, isLoading } = useGetQuotesQuery();
-
-    const [newQuoteVisible, setNewQuoteVisible] = useState(false);
+    const { newQuoteVisible, editQuoteVisible, quote } = useSelector(
+        (state: RootState) => state.blur
+    );
     const [page, setPage] = useState(0);
 
     useEffect(() => {
@@ -38,11 +42,41 @@ function App() {
 
     return (
         <div className="App">
-            <div className={`holder${newQuoteVisible ? 'blur' : ''}`}>
+            <div className={`holder${newQuoteVisible || editQuoteVisible ? ' blur' : ''}`}>
                 <header className="App-header">
                     <h1>All Quotes</h1>
-                    <button className="add-quote-button" onClick={() => setNewQuoteVisible(true)}>
-                        +
+                    <button className="add-quote-button" onClick={() => dispatch(showNewQuote())}>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 64 64"
+                            aria-labelledby="title"
+                            aria-describedby="desc"
+                            role="img"
+                            xmlnsXlink="http://www.w3.org/1999/xlink"
+                        >
+                            <circle
+                                data-name="layer2"
+                                cx="32"
+                                cy="32"
+                                r="30"
+                                fill="none"
+                                stroke="#202020"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                                strokeLinejoin="round"
+                                strokeLinecap="round"
+                            ></circle>
+                            <path
+                                data-name="layer1"
+                                fill="none"
+                                stroke="#202020"
+                                strokeMiterlimit="10"
+                                strokeWidth="2"
+                                d="M32 16v32m16-16H16"
+                                strokeLinejoin="round"
+                                strokeLinecap="round"
+                            ></path>
+                        </svg>
                     </button>
                 </header>
                 <Quotes data={data} isError={isError} isLoading={isLoading} page={page} />
@@ -67,7 +101,8 @@ function App() {
                 </div>
             </div>
 
-            {newQuoteVisible && <NewQuote setVisible={setNewQuoteVisible} />}
+            {newQuoteVisible && <NewQuote />}
+            {editQuoteVisible && <EditQuote quoteData={quote} />}
         </div>
     );
 }

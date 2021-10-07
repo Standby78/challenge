@@ -6,16 +6,15 @@ import { QuoteData } from '../../App.types';
 
 type NewQuoteProps = {
     quoteData: QuoteData;
-    setVisible: (visible: boolean) => void;
 };
-export function EditQuote({ quoteData, setVisible }: NewQuoteProps) {
+export function EditQuote({ quoteData }: NewQuoteProps) {
     const { data } = useGetQuoteQuery(quoteData.id);
     const [updateQuote] = useUpdateQuoteMutation();
 
     if (typeof data === 'undefined') return null;
     return (
         <>
-            <QuoteChild quoteData={data} setVisible={setVisible} apiHandler={updateQuote} />
+            <QuoteChild quoteData={data} apiHandler={updateQuote} />
         </>
     );
 }

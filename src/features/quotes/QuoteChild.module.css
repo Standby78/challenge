@@ -5,7 +5,20 @@
     left: 0%;
     top: 0%;
 }
+
 .editQuoteHolder {
+    font-family: 'Reenie Beanie';
+    font-size: 26px;
+    background: linear-gradient(135deg, #ffff88 81%, #ffff88 82%, #ffff88 82%, #ffffc6 100%);
+    border: 1px solid #e8e8e8;
+    border-top: 60px solid #fdfd86;
+    border-bottom-right-radius: 60px 5px;
+    padding: 0 9px;
+    margin: 10px;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 250px;
+    max-height: 250px;
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
